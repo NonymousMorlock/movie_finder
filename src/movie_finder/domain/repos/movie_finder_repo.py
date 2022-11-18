@@ -1,4 +1,5 @@
 import abc
+import typing
 
 from core.components.either import Either
 from core.errors.failures import MovieNotFoundFailure
@@ -12,5 +13,5 @@ class MovieFinderRepo(metaclass=abc.ABCMeta):
         return hasattr(subclass, 'get_movie') and callable(subclass.get_movie) or NotImplemented
 
     @abc.abstractmethod
-    def get_movie(self, movie_id):  # Either[MovieNotFoundFailure, list[Movie]]
+    def get_movie(self, movie_id) -> Either[MovieNotFoundFailure, list[Movie]]:
         pass

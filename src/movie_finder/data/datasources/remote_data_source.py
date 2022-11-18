@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 
 from core.errors.exceptions import MovieNotFoundException
 from src.movie_finder.data.models.movie_model import MovieModel
-from src.movie_finder.domain.entities.movie import Movie
 
 load_dotenv()
 
@@ -50,6 +49,7 @@ class RemoteDataSourceImpl(RemoteDataSource):
                         year=movie["Year"],
                         imdb_id=movie["imdbID"],
                         poster=movie["Poster"],
+                        category=movie["Type"],
                     )
                 )
             return movies

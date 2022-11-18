@@ -9,5 +9,5 @@ class GetMovie(UseCase):
     def __init__(self, movie_repository: MovieFinderRepo):
         self.movie_repository = movie_repository
 
-    def exec(self, request=None):  # -> Either[MovieNotFoundFailure, list[Movie]]
+    def exec(self, request=None) -> Either[MovieNotFoundFailure, list[Movie]]:
         return self.movie_repository.get_movie(request)

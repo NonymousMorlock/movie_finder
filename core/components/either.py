@@ -1,7 +1,12 @@
 import abc
 
 
-class Either(metaclass=abc.ABCMeta):
+class SubscriptableABCMeta(abc.ABCMeta):
+    def __getitem__(cls, item):
+        return cls
+
+
+class Either(metaclass=SubscriptableABCMeta):
     @classmethod
     def __subclasshook__(cls, subclass):
         return (hasattr(subclass, 'map') and callable(subclass.map) or
@@ -16,8 +21,8 @@ class Either(metaclass=abc.ABCMeta):
     def fold(self, fn_l, fn_r):
         pass
 
-    def __getitem__(self, index):
-        return self.fold(lambda l: l[index], lambda r: r[index])
+    def __getitem__(self, item):
+        return self
 
 
 class Left(Either):

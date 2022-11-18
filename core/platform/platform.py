@@ -4,7 +4,7 @@ import os
 
 class Platform:
     @staticmethod
-    def mkdir(path: str):
+    def _mkdir(path: str):
         try:
             os.makedirs(path)
         except OSError as exc:
@@ -15,7 +15,7 @@ class Platform:
 
     @staticmethod
     def write(path: str):
-        Platform.mkdir(os.path.dirname(path))
+        Platform._mkdir(os.path.dirname(path))
         return open(path, "w", encoding="UTF-8")
 
     @staticmethod

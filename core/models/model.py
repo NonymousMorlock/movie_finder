@@ -11,8 +11,8 @@ class Model(metaclass=abc.ABCMeta):
     def to_dict(self):
         pass
 
-    @abc.abstractmethod
-    def from_dict(self, hash_map):
+    @staticmethod
+    def from_dict(hash_map):
         pass
 
     @abc.abstractmethod
